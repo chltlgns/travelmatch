@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Travel Theme Colors */
+:root {
+  --background: #F5F7FA;
+  --navy: #1F2D3D;
+  --yellow: #FFC107;
+  --orange: #FF9800;
+  --coral: #FF6F61;
+  --emerald: #2ECC71;
+  --light-gray: #F8F9FA;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 178 42% 32%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 178 42% 32%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+
+    /* Custom Travel Theme Colors */
+    --teal: #2ECC71;
+    --coral: #FF6F61;
+    --cream: #F8F9FA;
+    --navy: #1F2D3D;
+    --yellow: #FFC107;
+    --orange: #FF9800;
+    --emerald: #2ECC71;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #F5F7FA;
+    color: #1F2D3D;
+  }
+}
+
+/* Custom Color Classes */
+.text-teal { color: var(--teal); }
+.text-coral { color: var(--coral); }
+.text-cream { color: var(--cream); }
+.bg-teal { background-color: var(--teal); }
+.bg-coral { background-color: var(--coral); }
+.bg-cream { background-color: var(--cream); }
+.border-teal { border-color: var(--teal); }
+.border-coral { border-color: var(--coral); }
+
+/* Travel-themed background with 3-color palette */
+.travel-bg {
+  background-color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.travel-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(44, 122, 123, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(245, 101, 101, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Main background */
+.wanderlust-bg {
+  background-color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.wanderlust-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232C7A7B' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  animation: drift 30s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateX(-60px); }
+  to { transform: translateX(60px); }
+}
+
+/* Card backgrounds with 3-color scheme */
+.pastel-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(44, 122, 123, 0.1);
+}
+
+/* Mobile-first responsive design */
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Button styles with solid colors */
+.adventure-button {
+  background-color: var(--emerald);
+  box-shadow: 0 8px 32px rgba(46, 204, 113, 0.3);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  border: none;
+  color: white;
+}
+
+.adventure-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(46, 204, 113, 0.4);
+  background-color: #27AE60;
+}
+
+.wanderlust-button {
+  background-color: var(--yellow);
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.3);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  color: var(--navy);
+  border: none;
+}
+
+.wanderlust-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+  background-color: var(--orange);
+  color: white;
+}
+
+/* Card hover effects */
+.travel-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.travel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(44, 122, 123, 0.15);
+}
+
+/* Destination image effects */
+.destination-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.destination-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+.destination-image img {
+  transition: transform 0.3s ease;
+}
+
+.destination-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobile-first responsive typography and layout */
+@media (max-width: 640px) {
+  /* Small screens (phones) */
+  .wanderlust-bg {
+    padding: 0.5rem;
+  }
+  
+  .travel-card {
+    margin-bottom: 1rem;
+  }
+
+  /* Fix text overflow on mobile */
+  .mobile-text-fix {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Responsive font sizes */
+  .mobile-title {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .mobile-subtitle {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .mobile-text {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Responsive spacing */
+  .mobile-spacing {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Button adjustments for mobile */
+  .mobile-button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+    min-height: 44px; /* Touch-friendly size */
+  }
+
+  /* Card grid adjustments */
+  .mobile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Badge adjustments */
+  .mobile-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    margin: 0.125rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Medium screens (tablets) */
+  .travel-card:hover {
+    transform: none; /* Disable hover effects on touch devices */
+  }
+
+  /* Responsive image heights */
+  .mobile-image {
+    height: 200px !important;
+  }
+
+  /* Progress bar adjustments */
+  .mobile-progress {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Large tablets and small laptops */
+  .travel-card {
+    padding: 1rem;
+  }
+}
+
+/* Custom scrollbar with 3-color theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2D5A5B;
+}
+
+/* Ensure text never overflows */
+.text-overflow-safe {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+/* Flexible containers */
+.flex-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Icon adjustments for mobile */
+@media (max-width: 640px) {
+  .mobile-icon {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+
+  .mobile-icon-large {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}

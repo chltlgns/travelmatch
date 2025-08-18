@@ -1,0 +1,68 @@
+동아시아 (East Asian)
+
+
+Taipei, Taiwan
+동남아시아 (Southeast Asian)
+Bangkok, Thailand
+Singapore, Singapore
+Bali (Denpasar), Indonesia
+Kuala Lumpur, Malaysia
+Manila, Philippines
+Jakarta, Indonesia
+남아시아 (South Asian)
+Mumbai, India
+Delhi, India
+서유럽 (Western European)
+Paris, France
+London, United Kingdom
+남유럽 (Southern European)
+Rome, Italy
+Barcelona, Spain
+Santorini (Thira), Greece
+Lisbon, Portugal
+북유럽 (Northern European)
+Amsterdam, Netherlands
+중유럽 (Central European)
+Prague, Czech Republic
+Vienna, Austria
+동유럽 (Eastern European)
+Budapest, Hungary
+Krakow, Poland
+Warsaw, Poland
+스칸디나비아 (Scandinavian)
+Stockholm, Sweden
+Copenhagen, Denmark
+Oslo, Norway
+북유럽 (Nordic)
+Reykjavik, Iceland
+Helsinki, Finland
+북미 (North American)
+New York City, United States
+Vancouver, Canada
+남미 (South American)
+Rio de Janeiro, Brazil
+Buenos Aires, Argentina
+아프리카 (African)
+Cape Town, South Africa
+Nairobi, Kenya
+Lagos, Nigeria
+북아프리카 (North African)
+Marrakech, Morocco
+Casablanca, Morocco
+오세아니아 (Oceanian)
+Sydney, Australia
+Auckland, New Zealand
+Melbourne, Australia
+중동 (Middle Eastern)
+Dubai, United Arab Emirates
+유라시아 (Eurasian)
+Istanbul, Turkey
+카리브해 (Caribbean)
+Havana, Cuba
+San Juan, Puerto Rico
+태평양 섬 (Pacific Islander)
+Honolulu, United States
+Suva, Fiji
+중미 (Central American)
+Guatemala City, Guatemala
+San José, Costa Rica
