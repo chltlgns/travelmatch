@@ -1,0 +1,20 @@
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Node / build outputs
+**/node_modules/
+**/dist/
+**/build/
+.vercel/
+
+# Archives / large files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Misc
+.env
+.env.*
