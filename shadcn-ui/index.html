@@ -9,7 +9,8 @@
   function gtag(){dataLayer.push(arguments);} 
   gtag('js', new Date());
 
-  gtag('config', 'G-54NMCJNHFS');
+  // SPA 내 라우팅 시 수동으로 page_view를 전송하기 위해 초기 자동 전송을 비활성화
+  gtag('config', 'G-54NMCJNHFS', { send_page_view: false });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
