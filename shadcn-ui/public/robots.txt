@@ -1,3 +1,21 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.travelmatch.xyz/sitemap.xml
+
+
+User-agent: Googlebot
+Disallow:
+
+
+User-agent: ChatGPT-User
+Disallow:
+
+User-agent: ChatGPT-Operator
+Disallow:
+
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /

@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
+import QuizPage from './pages/Quiz';
+import ResultsPage from './pages/Results';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
         <AnalyticsListener />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/results" element={<ResultsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
