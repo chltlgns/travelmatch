@@ -7,6 +7,7 @@ import { useAdvancedRecommendationEngine } from '@/hooks/useAdvancedRecommendati
 import { UserSurveyAnswers, RecommendationResult, UserTravelProfile } from '@/types/travel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, MapPin, Compass, Plane, Heart } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 
 export default function Index() {
   const [currentStep, setCurrentStep] = useState<'survey' | 'results'>('survey');
@@ -119,7 +120,8 @@ export default function Index() {
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 text-gray-600 shadow-lg mobile-text-fix">
             <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-teal mobile-icon" />
             <span className="font-medium text-sm sm:text-base">
-              {t('header.poweredBy', { count: travelData?.metadata.total_destinations || 0 })}
+              {t('header.poweredBy')}
+              &nbsp;{travelData?.metadata.total_destinations || 0}
             </span>
           </div>
         </div>
