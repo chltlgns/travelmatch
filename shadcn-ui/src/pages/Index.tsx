@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { MultiStepSurvey } from '@/components/MultiStepSurvey';
 import { EnhancedRecommendationResults } from '@/components/EnhancedRecommendationResults';
+import { SEOHead } from '@/components/SEOHead';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useAdvancedRecommendationEngine } from '@/hooks/useAdvancedRecommendationEngine';
 import { UserSurveyAnswers, RecommendationResult, UserTravelProfile } from '@/types/travel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,6 +12,7 @@ export default function Index() {
   const [currentStep, setCurrentStep] = useState<'survey' | 'results'>('survey');
   const [recommendations, setRecommendations] = useState<RecommendationResult[]>([]);
   const [travelProfile, setTravelProfile] = useState<UserTravelProfile | null>(null);
+  const { t } = useLanguage();
   
   const { travelData, loading, error, calculateAdvancedRecommendations, generateTravelProfile } = useAdvancedRecommendationEngine();
 
@@ -38,7 +41,7 @@ export default function Index() {
                 <div className="w-4 h-4 sm:w-6 sm:h-6 bg-coral rounded-full animate-ping"></div>
               </div>
             </div>
-            <p className="text-lg sm:text-xl font-semibold text-gray-700 mb-2 text-center mobile-text-fix">Discovering Amazing Places...</p>
+            <p className="text-lg sm:text-xl font-semibold text-gray-700 mb-2 text-center mobile-text-fix">{t('common.loading')}</p>
             <p className="text-sm text-gray-500 text-center mobile-text-fix">Finding the perfect destinations just for you</p>
           </CardContent>
         </Card>
@@ -53,12 +56,12 @@ export default function Index() {
           <CardHeader className="mobile-spacing">
             <CardTitle className="text-center text-coral flex items-center justify-center gap-2 mobile-text-fix">
               <Heart className="h-5 w-5 sm:h-6 sm:w-6 mobile-icon" />
-              <span className="mobile-subtitle">Oops! Something went wrong</span>
+              <span className="mobile-subtitle">{t('common.error')}</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center mobile-spacing">
             <p className="text-gray-600 mb-4 mobile-text-fix">{error}</p>
-            <p className="text-sm text-gray-500 mobile-text-fix">Don't worry, your adventure awaits! Please try again.</p>
+            <p className="text-sm text-gray-500 mobile-text-fix">{t('common.tryAgain')}</p>
           </CardContent>
         </Card>
       </div>
@@ -66,8 +69,10 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen wanderlust-bg">
-      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-12">
+    <>
+      <SEOHead canonical="https://www.travelmatch.xyz/" />
+      <div className="min-h-screen wanderlust-bg">
+        <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-16 fade-in">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
@@ -76,20 +81,20 @@ export default function Index() {
               <Plane className="h-4 w-4 sm:h-6 sm:w-6 text-coral absolute -top-1 -right-1 sm:-top-2 sm:-right-2 mobile-icon" />
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-teal mobile-title text-overflow-safe">
-              TravelMatch
+              {t('header.title')}
             </h1>
           </div>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-medium leading-relaxed mobile-text-fix px-4">
-            ✈️ Discover your perfect travel destination and let wanderlust guide your next adventure! 🌍
+            {t('header.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 text-gray-600">
             <div className="flex items-center gap-2">
               <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-coral mobile-icon" />
-              <span className="font-medium text-sm sm:text-base mobile-text-fix">Find Your Dream Destination</span>
+              <span className="font-medium text-sm sm:text-base mobile-text-fix">{t('header.findDestination')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Plane className="h-4 w-4 sm:h-5 sm:w-5 text-teal mobile-icon" />
-              <span className="font-medium text-sm sm:text-base mobile-text-fix">Start Your Journey</span>
+              <span className="font-medium text-sm sm:text-base mobile-text-fix">{t('header.startJourney')}</span>
             </div>
           </div>
         </div>
@@ -114,11 +119,12 @@ export default function Index() {
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 text-gray-600 shadow-lg mobile-text-fix">
             <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-teal mobile-icon" />
             <span className="font-medium text-sm sm:text-base">
-              ✨ Powered by {travelData?.metadata.total_destinations} incredible cities worldwide ✨
+              {t('header.poweredBy', { count: travelData?.metadata.total_destinations || 0 })}
             </span>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

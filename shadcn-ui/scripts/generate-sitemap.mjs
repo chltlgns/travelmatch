@@ -9,10 +9,24 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = process.env.SITEMAP_BASE_URL || 'https://www.travelmatch.xyz';
 
 // Define SPA paths here. Add more as you introduce new routes.
-// Note: Current app defines only '/' route; '/quiz' and '/results' are not routes.
+const CITY_PATHS = [
+  '/city/paris',
+  '/city/london', 
+  '/city/newyork',
+  '/city/seoul',
+  '/city/kyoto',
+  '/city/dubai',
+  '/city/bangkok',
+  '/city/rome',
+  '/city/singapore',
+  '/city/taipei'
+];
+
+const BASE_PATHS = ['/', '/quiz', '/results'];
+
 const PATHS = (process.env.SITEMAP_PATHS
   ? process.env.SITEMAP_PATHS.split(',').map((p) => p.trim()).filter(Boolean)
-  : ['/', '/quiz', '/results']
+  : [...BASE_PATHS, ...CITY_PATHS]
 );
 
 function xmlEscape(value) {
@@ -46,12 +60,31 @@ function normalizeUrl(base, p) {
 
 function main() {
   const today = new Date().toISOString().slice(0, 10);
-  const entries = PATHS.map((p, index) => ({
-    loc: normalizeUrl(BASE_URL, p),
-    lastmod: today,
-    changefreq: p === '/' ? 'weekly' : 'monthly',
-    priority: p === '/' ? '1.0' : '0.8',
-  }));
+  const entries = PATHS.map((p, index) => {
+    let priority = '0.8';
+    let changefreq = 'monthly';
+    
+    if (p === '/') {
+      priority = '1.0';
+      changefreq = 'weekly';
+    } else if (p === '/quiz') {
+      priority = '0.9';
+      changefreq = 'monthly';
+    } else if (p === '/results') {
+      priority = '0.8';
+      changefreq = 'weekly';
+    } else if (p.startsWith('/city/')) {
+      priority = '0.7';
+      changefreq = 'monthly';
+    }
+    
+    return {
+      loc: normalizeUrl(BASE_URL, p),
+      lastmod: today,
+      changefreq,
+      priority,
+    };
+  });
 
   const xml = buildSitemapXml(entries);
 

@@ -3,10 +3,13 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import { LanguageToggle } from '@/components/LanguageToggle';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 import QuizPage from './pages/Quiz';
 import ResultsPage from './pages/Results';
+import CityResultPage from './pages/CityResult';
 
 const queryClient = new QueryClient();
 
@@ -31,16 +34,20 @@ function AnalyticsListener() {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
-        <AnalyticsListener />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/quiz" element={<QuizPage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <LanguageProvider>
+        <Toaster />
+        <BrowserRouter>
+          <AnalyticsListener />
+          <LanguageToggle />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/city/:cityName" element={<CityResultPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
