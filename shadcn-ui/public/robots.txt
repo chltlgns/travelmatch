@@ -28,3 +28,8 @@ Disallow: /
 
 User-agent: Bytespider
 Disallow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.travelmatch.xyz/sitemap.xml
