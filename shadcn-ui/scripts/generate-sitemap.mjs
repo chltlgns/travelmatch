@@ -60,7 +60,7 @@ function normalizeUrl(base, p) {
 
 function main() {
   const today = new Date().toISOString().slice(0, 10);
-  const entries = PATHS.map((p, index) => {
+  const entries = PATHS.map((p) => {
     let priority = '0.8';
     let changefreq = 'monthly';
     
@@ -88,11 +88,10 @@ function main() {
 
   const xml = buildSitemapXml(entries);
 
-  const outPath = path.resolve(__dirname, '../public/sitemap.xml');
+  // 🚨 프로젝트 루트(shadcn-ui) 기준 public/에 저장
+  const outPath = path.join(process.cwd(), "public", "sitemap.xml");
   fs.writeFileSync(outPath, xml, 'utf-8');
   console.log(`[sitemap] Generated ${outPath} with ${entries.length} entries`);
 }
 
 main();
-
-
