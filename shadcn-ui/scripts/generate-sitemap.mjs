@@ -88,8 +88,8 @@ function main() {
 
   const xml = buildSitemapXml(entries);
 
-  // 🚨 프로젝트 루트(shadcn-ui) 기준 public/에 저장
-  const outPath = path.join(process.cwd(), "public", "sitemap.xml");
+  // 빌드 후 dist 폴더에 sitemap.xml 생성
+  const outPath = path.join(process.cwd(), "dist", "sitemap.xml");
   fs.writeFileSync(outPath, xml, 'utf-8');
   console.log(`[sitemap] Generated ${outPath} with ${entries.length} entries`);
 }
